@@ -1,0 +1,100 @@
+# feathers-sendgrid
+
+> A [SendGrid](https://sendgrid.com) Service for [FeatherJS](https://github.com/feathersjs).
+
+## TODO
+- [ ] Better example 
+- [ ] Lock down so mailer service is not exposed externally, maybe even by default for security reasons
+ 
+
+## Installation
+
+```bash
+npm install sendgrid feathers-sendgrid --save
+```
+
+## Documentation
+
+```js
+
+// Register the service, see below for an example
+app.use('/mailer', sendgridService({
+    apiKey: "YOUR_SENDGRID_API_KEY"
+  }
+));
+
+// Use the service
+var email = {
+   from: 'FROM_EMAIL',
+   to: 'TO_EMAIL',
+   subject: 'Sendgrid test',
+   html: 'This is the email body'
+};
+
+app.service('mailer').create(email).then(function (result) {
+  console.log('Sent email', result);
+}).catch(err => {
+  console.log(err);
+});
+
+```
+
+## Complete Example
+
+Here's an example of a Feathers server with a `mailer` Sendgrid service.
+
+```js
+import rest = from 'feathers-rest';
+import feathers from 'feathers';
+import bodyParser from 'body-parser';
+import sendgridService from '../lib';
+
+
+// Create a feathers instance.
+var app = feathers()
+  // Enable REST services
+  .configure(rest())
+  // Turn on JSON parser for REST services
+  .use(bodyParser.json())
+  // Turn on URL-encoded parser for REST services
+  .use(bodyParser.urlencoded({extended: true}));
+
+// Register the Sendgrid service
+app.use('/mailer', sendgridService({
+    apiKey: "YOUR_SENDGRID_API_KEY"
+  }
+));
+
+// Use the service
+var email = {
+   from: 'FROM_EMAIL',
+   to: 'TO_EMAIL',
+   subject: 'Sendgrid test',
+   html: 'This is the email body'
+};
+
+app.service('mailer').create(email).then(function (result) {
+  console.log('Sent email', result);
+}).catch(err => {
+  console.log(err);
+});
+
+// Start the server.
+var port = 3030;
+app.listen(port, function() {
+  console.log(`Feathers server listening on port ${port}`);
+});
+```
+
+You can run this example by using `node examples/app`. Make sure you've added your 
+
+## License
+
+Copyright (c) 2016
+
+Licensed under the [MIT license](LICENSE).
+
+
+## Author
+
+[Cory Smith](https://github.com/corymsmith)
