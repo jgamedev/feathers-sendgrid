@@ -17,8 +17,10 @@ class Service {
 
   create(data) {
     return new Promise((resolve, reject) => {
+      data.from = data.from || this.options.from;
+      
       this._validateParams(data);
-      var email  = this._formatData(data);
+      let email  = this._formatData(data);
 
       this._send(email, function (err, body) {
         if (err) {
