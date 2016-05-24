@@ -12,22 +12,22 @@ class Service {
 
     this.options = options;
     this.sendgrid = new Sendgrid(options.apiKey);
-    this._send = this.sendgrid.send;
+    this._send = this.sendgrid.send.bind(this.sendgrid);
   }
 
   create(data) {
     return new Promise((resolve, reject) => {
       data.from = data.from || this.options.from;
-      
+
       this._validateParams(data);
       let email  = this._formatData(data);
 
       this._send(email, function (err, body) {
         if (err) {
           return reject(err);
-        } else {
-          return resolve(body);
         }
+
+        return resolve(body);
       });
     });
   }
@@ -69,7 +69,7 @@ class Service {
       params.to = data.to;
     }
 
-    var email =  new this.sendgrid.Email(params);
+    var email = new this.sendgrid.Email(params);
 
     if (typeof data.to === 'object') {
       data.to.forEach(function(item){
