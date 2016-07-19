@@ -1,8 +1,8 @@
 const feathers = require('feathers');
-const service = require('../lib');
+const mailService = require('../lib').MailService;
 
 // Create the sendgrid service
-const sendgridService = service({
+const sendgridService = mailService({
   apiKey: 'API_KEY'
 });
 
