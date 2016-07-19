@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { renderTemplate } from '../../../src/hooks';
 
-describe.only('renderTemplate', () => {
+describe('renderTemplate', () => {
   let hook;
 
   beforeEach(() => {
@@ -20,15 +20,15 @@ describe.only('renderTemplate', () => {
   });
 
   describe('with valid options', () => {
-    it('returns an error when template is not provided', () => {
+    it.skip('returns an error when template is not provided', () => {
       
     });
 
-    it('returns an error when template path not found', () => {
+    it.skip('returns an error when template path not found', () => {
       
     });
 
-    it('renders template', () => {
+    it.skip('renders template', () => {
       
     });
   });

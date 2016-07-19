@@ -58,7 +58,7 @@ module.exports = function sendEmail(options = {}) {
     return new Promise((resolve, reject) => {
       hook.app.service(options.mailerEndpoint)
         .create(data, params)
-        .then(result => {
+        .then(() => {
           // return the original hook
           resolve(hook);
         })
