@@ -2,6 +2,9 @@
 
 > A [SendGrid](https://sendgrid.com) Service for [FeatherJS](https://github.com/feathersjs).
 
+
+[![Build Status](https://travis-ci.org/feathersjs/feathers-sendgrid.png?branch=master)](https://travis-ci.org/feathersjs/feathers-sendgrid)
+
 **So far this only supports sending email. If you'd like additional functionality PRs are welcome! :smile:** 
 
 ## Installation
