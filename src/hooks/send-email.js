@@ -1,5 +1,6 @@
 'use strict';
 
+import merge from 'lodash.merge';
 import Debug from 'debug';
 
 const debug = new Debug('feathers-sendgrid:send-email');
@@ -16,7 +17,7 @@ module.exports = function sendEmail(options = {}) {
 
     debug('sendEmail called with options', options);
     
-    let template = options.template;
+    let template = merge(hook.params.template, options.template);
 
     if (hook.type === 'before') {
       template.data = Object.assign({}, hook.data, template.data);
