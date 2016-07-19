@@ -49,6 +49,7 @@
     "babel-polyfill": "^6.3.14",
     "debug": "^2.2.0",
     "feathers-errors": "^2.4.0",
+    "lodash.merge": "^4.4.0",
     "request": "^2.73.0"
   },
   "devDependencies": {

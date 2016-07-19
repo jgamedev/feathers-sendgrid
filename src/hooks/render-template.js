@@ -46,7 +46,7 @@ export default function renderTemplate(options = {}) {
         }
         
         try {
-          debug(`Rendering file ${filepath}`);
+          debug(`Rendering file ${filepath} with data`, templateData);
           
           // Compile the template
           const template = options.engine.compile(file.toString());
