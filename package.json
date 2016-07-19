@@ -1,7 +1,7 @@
 {
   "name": "feathers-sendgrid",
   "description": "Feathers Sendgrid Service",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/feathersjs/feathers-sendgrid",
   "repository": {
     "type": "git",
