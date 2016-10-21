@@ -4,7 +4,7 @@ const hooks = require('feathers-hooks');
 const socketio = require('feathers-socketio');
 const bodyParser = require('body-parser');
 const errorHandler = require('feathers-errors/handler');
-const MailService = require('../lib').MailService
+const MailService = require('../lib').MailService;
 const mailerHooks = require('../lib').hooks;
 
 // Create a feathers instance.

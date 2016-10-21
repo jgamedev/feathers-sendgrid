@@ -1,11 +1,11 @@
-import { expect } from 'chai';
-import { validateEmail } from '../../../src/hooks';
+import {expect} from 'chai';
+import {validateEmail} from '../../../src/hooks';
 
 describe('validateEmail', () => {
   let hook;
 
   beforeEach(() => {
-    hook = { data: {} };
+    hook = {data: {}};
   });
 
   describe('when fields are missing', () => {
@@ -15,10 +15,10 @@ describe('validateEmail', () => {
         expect(hook).to.equal(undefined);
         done();
       })
-      .catch(error => {
-        expect(error.code).to.equal(400);
-        done();
-      });
+        .catch(error => {
+          expect(error.code).to.equal(400);
+          done();
+        });
     });
 
     it('highlights missing key in errors object', (done) => {
@@ -27,10 +27,10 @@ describe('validateEmail', () => {
         expect(hook).to.equal(undefined);
         done();
       })
-      .catch(error => {
-        expect(error.errors.from).to.not.equal(undefined);
-        done();
-      });
+        .catch(error => {
+          expect(error.errors.from).to.not.equal(undefined);
+          done();
+        });
     });
   });
 
@@ -53,7 +53,7 @@ describe('validateEmail', () => {
   describe('when to is missing but personalizations are present', () => {
     it('returns original hook', (done) => {
       hook.data = {
-        personalizations: [{ to: []}],
+        personalizations: [{to: []}],
         from: 'me@example.com',
         subject: 'Hi',
         content: 'Hello'

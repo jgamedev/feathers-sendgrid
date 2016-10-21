@@ -9,14 +9,14 @@ const defaults = {
   type: 'text/html'
 };
 
-export default function renderTemplate(options = {}) {
+export default function renderTemplate (options = {}) {
   options = Object.assign({}, defaults, options);
 
   if (!options.engine) {
     throw new Error(`You must provide a view engine instance that exposes the 'compile' method via 'options.engine'.`);
   }
 
-  return function(hook) {
+  return function (hook) {
     hook.params.template = hook.params.template || {};
 
     return new Promise((resolve, reject) => {
@@ -33,21 +33,20 @@ export default function renderTemplate(options = {}) {
 
       if (options.path) {
         filepath = path.join(options.path, `${templateName}.${extension}`);
-      }
-      else {
+      } else {
         filepath = path.join(hook.app.get('views'), 'emails', `${templateName}.${extension}`);
       }
 
       debug(`Reading file ${filepath}`);
 
-      fs.readFile(filepath, function(error, file) {
+      fs.readFile(filepath, function (error, file) {
         if (error) {
           return reject(error);
         }
-        
+
         try {
           debug(`Rendering file ${filepath} with data`, templateData);
-          
+
           // Compile the template
           const template = options.engine.compile(file.toString());
           const html = template(templateData);
@@ -56,8 +55,7 @@ export default function renderTemplate(options = {}) {
           hook.data.content = html;
 
           return resolve(hook);
-        }
-        catch(error) {
+        } catch (error) {
           debug(`Error rendering email template ${filepath}`, error);
           return reject(error);
         }

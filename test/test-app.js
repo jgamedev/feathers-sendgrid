@@ -10,7 +10,6 @@ const sendgridService = mailService({
 var app = feathers()
   .use('/mailer', sendgridService);
 
-
 // Start the server.
 const port = 3030;
 
