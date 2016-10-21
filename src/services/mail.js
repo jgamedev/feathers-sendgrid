@@ -39,7 +39,6 @@ export class MailService {
 
         error = errors[response.statusCode];
 
-        /* jshint newcap: false */
         if (error) {
           return reject(new Error('Error sending email to Sendgrid', body));
         }

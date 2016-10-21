@@ -28,7 +28,6 @@ export default function normalizeEmail () {
       data.from = { email: data.from };
     }
 
-    /* jshint camelcase: false */
     if (typeof data.reply_to === 'string') {
       data.reply_to = { email: data.reply_to };
     }

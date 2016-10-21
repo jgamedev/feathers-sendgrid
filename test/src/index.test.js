@@ -1,5 +1,3 @@
-/* jshint expr: true */
-
 import {expect} from 'chai';
 import sendgrid, {hooks, MailService} from '../../src';
 
