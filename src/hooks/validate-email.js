@@ -11,15 +11,14 @@ const expectedFields = [
   'content'
 ];
 
-export default function validateEmail() {
-  return function(hook) {
+export default function validateEmail () {
+  return function (hook) {
     debug(`Validating hook.data`, hook.data);
 
     let error;
 
     for (let key of expectedFields) {
       if (hook.data[key] === undefined) {
-
         // If the recipients were specified in the personalizations ignore this key
         if (key === 'to' && hook.data.personalizations) {
           continue;

@@ -1,5 +1,3 @@
-// /*jshint expr: true*/
-
 // import chai from 'chai';
 // import { expect } from 'chai';
 // import assert from 'assert';
@@ -15,7 +13,6 @@
 
 // import Sendgrid from 'sendgrid';
 // const sendgrid = new Sendgrid('API_KEY');
-
 
 // const sendgridService = service({apiKey: 'API_KEY'});
 // const app = feathers().use('/mailer', sendgridService);
@@ -33,8 +30,6 @@
 //   subject: 'Email Subject',
 //   html: 'message html'
 // };
-
-
 
 // describe('Sendgrid Service', function () {
 
@@ -116,7 +111,6 @@
 //     describe('when sending to an array of email addresses', () => {
 
 //       it('correctly adds them to email', (done) => {
-
 
 //         var email =  new sendgrid.Email({from: validParamsWithArrayInToField.from, html: validParamsWithArrayInToField.html, subject: validParamsWithArrayInToField.subject});
 //         email.addSmtpapiTo('to@to.com');

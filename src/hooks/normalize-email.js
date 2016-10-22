@@ -5,8 +5,8 @@ import Debug from 'debug';
 
 const debug = new Debug('feathers-sendgrid:normalize-email');
 
-export default function normalizeEmail() {
-  return function(hook) {
+export default function normalizeEmail () {
+  return function (hook) {
     debug(`Normalizing hook.data`, hook.data);
 
     let data = Object.assign({}, hook.data);
@@ -14,9 +14,7 @@ export default function normalizeEmail() {
 
     if (typeof data.to === 'string') {
       recipients = [{ email: data.to }];
-    }
-    // Support batch sending
-    else if (Array.isArray(data.to)) {
+    } else if (Array.isArray(data.to)) { // Support batch sending
       recipients = data.to.map(recipient => {
         // Handle array of emails (ie. ['user1@domain.com', 'user2@domain.com'])
         return typeof recipient === 'string' ? { email: recipient } : recipient;
@@ -30,7 +28,6 @@ export default function normalizeEmail() {
       data.from = { email: data.from };
     }
 
-    /*jshint camelcase: false */
     if (typeof data.reply_to === 'string') {
       data.reply_to = { email: data.reply_to };
     }

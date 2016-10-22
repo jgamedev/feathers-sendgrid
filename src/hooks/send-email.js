@@ -11,26 +11,24 @@ const defaults = {
   template: {}
 };
 
-module.exports = function sendEmail(options = {}) {
-  return function(hook) {
+module.exports = function sendEmail (options = {}) {
+  return function (hook) {
     options = Object.assign({}, defaults, hook.app.get('mailer'), options);
 
     debug('sendEmail called with options', options);
-    
+
     let template = merge(hook.params.template, options.template);
 
     if (hook.type === 'before') {
       template.data = Object.assign({}, hook.data, template.data);
-    }
-    else if (hook.type === 'after') {
+    } else if (hook.type === 'after') {
       let result = hook.result;
-      
+
       // Handle Mongoose Models
       if (hook.result.toObject) {
         result = hook.result.toObject();
-      }
-      // Handle Sequelize Models
-      else if (hook.result.toJSON) {
+      } else if (hook.result.toJSON) {
+        // Handle Sequelize Models
         result = hook.result.toJSON();
       }
 
@@ -41,7 +39,7 @@ module.exports = function sendEmail(options = {}) {
     const recipient = template.data[options.emailField];
     const data = Object.assign({}, options);
     const params = Object.assign({}, hook.params, { template });
-    
+
     // If a recipient wasn't already provided and we found one
     // in our data then let's use that one.
     if (recipient && (!data.to || !data.personalizations)) {

@@ -1,9 +1,5 @@
-/*jshint expr: true*/
-
-import { expect } from 'chai';
-import sendgrid from '../../src';
-import { hooks } from '../../src';
-import { MailService } from '../../src';
+import {expect} from 'chai';
+import sendgrid, {hooks, MailService} from '../../src';
 
 describe('Feathers Sendgrid', () => {
   it('is CommonJS compatible', () => {
